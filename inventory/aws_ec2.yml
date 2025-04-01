@@ -1,9 +1,0 @@
-plugin: amazon.aws.aws_ec2
-regions:
-  - us-east-1  # Change to your region
-filters:
-  tag:Name: ansible-spacelift
-  instance-state-name: running
-keyed_groups:
-  - key: tags.Name
-    prefix: instance
