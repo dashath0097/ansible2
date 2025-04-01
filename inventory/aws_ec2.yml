@@ -1,9 +1,12 @@
 plugin: amazon.aws.aws_ec2
 regions:
-  - us-east-1  # Change to your AWS region
+  - us-east-1
 filters:
   tag:Name: ansible-spacelift
   instance-state-name: running
 keyed_groups:
   - key: tags.Name
     prefix: instance
+
+compose:
+  ansible_ssh_private_key_file: "/mnt/workspace/source/ansible_key.pem"
