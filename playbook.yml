@@ -2,6 +2,11 @@
   hosts: all
   become: true
   tasks:
+    - name: Update package cache (Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
     - name: Install Apache (Ubuntu)
       apt:
         name: apache2
@@ -18,4 +23,4 @@
       service:
         name: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' }}"
         state: started
-        enabled: true
+        enabled: yes
